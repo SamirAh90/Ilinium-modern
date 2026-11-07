@@ -1,0 +1,6 @@
+- [x] Lägg till juridisk sida med salongens uppgifter och länk enbart i sidfoten.
+- [x] Exportera och bildkontrollera PDF för varje adminsida samt den juridiska sidan.
+- [x] Spara och samla PDF-filer för kunden.
+- [x] Kontrollera Google-länken och uppdatera officiella länkar; aktuella öppettider kunde inte bekräftas och ändrades inte.
+- [x] Rätta sidornas sökmetadata, lokal företagsinformation och webbplatskarta.
+- [x] Verifiera offentlig SEO och admininställningar.

@@ -1,0 +1,4 @@
+GRANT SELECT ON public.site_settings, public.treatment_categories, public.treatments, public.staff, public.gallery_images, public.opening_hours, public.special_opening_hours TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.site_settings, public.site_settings_draft, public.content_versions, public.treatment_categories, public.treatments, public.staff, public.gallery_images, public.opening_hours, public.special_opening_hours TO authenticated;
+GRANT SELECT ON public.user_roles TO authenticated;
+GRANT ALL ON public.site_settings, public.site_settings_draft, public.content_versions, public.treatment_categories, public.treatments, public.staff, public.gallery_images, public.opening_hours, public.special_opening_hours, public.user_roles TO service_role;
