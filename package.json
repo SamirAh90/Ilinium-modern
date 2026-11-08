@@ -8,6 +8,7 @@
     "build": "vite build",
     "build:strato": "vite build && node scripts/package-strato.mjs",
     "export:content": "node scripts/export-content.mjs",
+    "test:backend": "node scripts/test-local-backend.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",

@@ -11,6 +11,7 @@ node_modules
 dist
 strato-upload.zip
 public/api/config.php
+local/
 dist-ssr
 .output
 .vinxi
