@@ -2,7 +2,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { getPublicContent } from "./public-content";
 import type { PublicContent, SiteContent } from "./content";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 export { seoHead } from "./seo";
 
 export const publicContentQuery = queryOptions({
@@ -18,7 +18,7 @@ export function useContent(): PublicContent & { preview: boolean } {
 
   useEffect(() => {
     if (!new URLSearchParams(window.location.search).has("forhandsgranska")) return;
-    supabase
+    backend
       .from("site_settings_draft")
       .select("content")
       .eq("id", 1)

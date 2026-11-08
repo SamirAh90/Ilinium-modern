@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { AdminPage, Card, Loading } from "@/components/admin/ui";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 import { useInvalidatePublic } from "@/lib/admin";
 import { WEEKDAYS, formatHourRow, type OpeningHour, type SpecialHour } from "@/lib/content";
 
@@ -20,8 +20,8 @@ function Page() {
     queryKey: ["admin", "hours"],
     queryFn: async () => {
       const [h, s] = await Promise.all([
-        supabase.from("opening_hours").select("*").order("weekday"),
-        supabase.from("special_opening_hours").select("*").order("date"),
+        backend.from("opening_hours").select("*").order("weekday"),
+        backend.from("special_opening_hours").select("*").order("date"),
       ]);
       if (h.error || s.error) throw new Error("Kunde inte läsa öppettider");
       return { hours: h.data as OpeningHour[], special: s.data as SpecialHour[] };
@@ -39,7 +39,7 @@ function Page() {
       if (!h.closed && (!h.opens || !h.closes || h.opens >= h.closes)) return toast.error(`Kontrollera tiderna för ${WEEKDAYS[h.weekday - 1]}.`);
     }
     setBusy(true);
-    const { error } = await supabase.from("opening_hours").upsert(hours.map((h) => ({ weekday: h.weekday, closed: h.closed, opens: h.closed ? null : h.opens, closes: h.closed ? null : h.closes })));
+    const { error } = await backend.from("opening_hours").upsert(hours.map((h) => ({ weekday: h.weekday, closed: h.closed, opens: h.closed ? null : h.opens, closes: h.closed ? null : h.closes })));
     setBusy(false);
     if (error) return toast.error("Kunde inte spara.");
     await refetch(); invalidate();
@@ -49,7 +49,7 @@ function Page() {
   async function addSpecial() {
     if (!ns.date) return toast.error("Välj ett datum.");
     if (!ns.closed && ns.opens >= ns.closes) return toast.error("Kontrollera tiderna.");
-    const { error } = await supabase.from("special_opening_hours").insert({ date: ns.date, label: ns.label, closed: ns.closed, opens: ns.closed ? null : ns.opens, closes: ns.closed ? null : ns.closes });
+    const { error } = await backend.from("special_opening_hours").insert({ date: ns.date, label: ns.label, closed: ns.closed, opens: ns.closed ? null : ns.opens, closes: ns.closed ? null : ns.closes });
     if (error) return toast.error("Kunde inte spara.");
     setNs({ ...ns, date: "", label: "" });
     await refetch(); invalidate();
@@ -88,7 +88,7 @@ function Page() {
               <span className="w-28 font-medium">{s.date}</span>
               <span className="flex-1">{s.label}</span>
               <span>{formatHourRow(s)}</span>
-              <Button variant="ghost" size="icon" aria-label="Ta bort" onClick={async () => { await supabase.from("special_opening_hours").delete().eq("id", s.id); await refetch(); invalidate(); toast.success("Borttagen"); }}><Trash2 /></Button>
+              <Button variant="ghost" size="icon" aria-label="Ta bort" onClick={async () => { await backend.from("special_opening_hours").delete().eq("id", s.id); await refetch(); invalidate(); toast.success("Borttagen"); }}><Trash2 /></Button>
             </li>
           ))}
           {data.special.length === 0 && <li className="py-2 text-sm text-muted-foreground">Inga avvikande dagar.</li>}

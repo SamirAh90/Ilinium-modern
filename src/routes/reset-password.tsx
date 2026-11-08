@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 
 export const Route = createFileRoute("/reset-password")({
   head: () => ({
@@ -27,13 +27,13 @@ function Reset() {
   const [busy, setBusy] = useState(false);
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (pw.length < 8) return toast.error("Lösenordet måste ha minst 8 tecken.");
+    if (pw.length < 12) return toast.error("Lösenordet måste ha minst 12 tecken.");
     setBusy(true);
-    const { error } = await supabase.auth.updateUser({ password: pw });
+    const { error } = await backend.auth.updateUser({ password: pw });
     setBusy(false);
     if (error) return toast.error("Kunde inte spara lösenordet. Länken kan ha gått ut.");
     toast.success("Lösenordet är ändrat.");
-    navigate({ to: "/admin" });
+    navigate({ to: "/auth" });
   }
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted/60 px-4">

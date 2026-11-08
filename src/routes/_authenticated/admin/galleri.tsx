@@ -10,7 +10,7 @@ import {
   AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { AdminPage, Loading, MoveButtons } from "@/components/admin/ui";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 import { uploadImage, useInvalidatePublic } from "@/lib/admin";
 import type { GalleryImage } from "@/lib/content";
 
@@ -20,7 +20,7 @@ function Page() {
   const { data, refetch, isLoading } = useQuery({
     queryKey: ["admin", "gallery"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("gallery_images").select("*").order("sort_order");
+      const { data, error } = await backend.from("gallery_images").select("*").order("sort_order");
       if (error) throw error;
       return data as GalleryImage[];
     },
@@ -43,7 +43,7 @@ function Page() {
       try {
         const url = await uploadImage(f, "gallery");
         const alt = f.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ");
-        const { error } = await supabase.from("gallery_images").insert({ url, alt: `Bild från Salong Ilinium – ${alt}`, sort_order: order++ });
+        const { error } = await backend.from("gallery_images").insert({ url, alt: `Bild från Salong Ilinium – ${alt}`, sort_order: order++ });
         if (!error) ok++;
       } catch (e) {
         toast.error((e as Error).message);
@@ -54,12 +54,12 @@ function Page() {
   }
 
   async function reorder(next: GalleryImage[]) {
-    await Promise.all(next.map((g, i) => supabase.from("gallery_images").update({ sort_order: i + 1 }).eq("id", g.id)));
+    await Promise.all(next.map((g, i) => backend.from("gallery_images").update({ sort_order: i + 1 }).eq("id", g.id)));
     done("Ordningen är sparad");
   }
 
   async function patch(id: string, p: Partial<GalleryImage>, msg = "Sparat") {
-    const { error } = await supabase.from("gallery_images").update(p).eq("id", id);
+    const { error } = await backend.from("gallery_images").update(p).eq("id", id);
     if (error) return toast.error("Kunde inte spara.");
     done(msg);
   }
@@ -122,7 +122,7 @@ function Page() {
               <AlertDialogTrigger asChild><Button variant="ghost" size="icon" aria-label="Ta bort"><Trash2 /></Button></AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader><AlertDialogTitle>Ta bort bilden?</AlertDialogTitle></AlertDialogHeader>
-                <AlertDialogFooter><AlertDialogCancel>Avbryt</AlertDialogCancel><AlertDialogAction onClick={async () => { await supabase.from("gallery_images").delete().eq("id", img.id); done("Bilden är borttagen"); }}>Ta bort</AlertDialogAction></AlertDialogFooter>
+                <AlertDialogFooter><AlertDialogCancel>Avbryt</AlertDialogCancel><AlertDialogAction onClick={async () => { await backend.from("gallery_images").delete().eq("id", img.id); done("Bilden är borttagen"); }}>Ta bort</AlertDialogAction></AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
           </li>

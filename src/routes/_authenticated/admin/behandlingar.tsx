@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AdminPage, Card, Field, ImageInput, Loading, MoveButtons } from "@/components/admin/ui";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 import { useInvalidatePublic } from "@/lib/admin";
 import { formatPrice, type Category, type Treatment } from "@/lib/content";
 
@@ -22,8 +22,8 @@ const q = {
   queryKey: ["admin", "treatments"],
   queryFn: async () => {
     const [c, t] = await Promise.all([
-      supabase.from("treatment_categories").select("*").order("sort_order"),
-      supabase.from("treatments").select("*").order("sort_order"),
+      backend.from("treatment_categories").select("*").order("sort_order"),
+      backend.from("treatments").select("*").order("sort_order"),
     ]);
     if (c.error || t.error) throw new Error("Kunde inte läsa behandlingar");
     return { categories: c.data as Category[], treatments: t.data as Treatment[] };
@@ -53,15 +53,15 @@ function Page() {
       category_id: edit.category_id ?? null, image_url: edit.image_url || null, featured: !!edit.featured, visible: edit.visible ?? true,
     };
     const res = edit.id
-      ? await supabase.from("treatments").update(row).eq("id", edit.id)
-      : await supabase.from("treatments").insert({ ...row, sort_order: (data?.treatments.length ?? 0) + 1 });
+      ? await backend.from("treatments").update(row).eq("id", edit.id)
+      : await backend.from("treatments").insert({ ...row, sort_order: (data?.treatments.length ?? 0) + 1 });
     if (res.error) return toast.error("Kunde inte spara.");
     setEdit(null);
     done("Sparat – priset är uppdaterat på hemsidan.");
   }
 
   async function quick(id: string, patch: Partial<Treatment>) {
-    const { error } = await supabase.from("treatments").update(patch).eq("id", id);
+    const { error } = await backend.from("treatments").update(patch).eq("id", id);
     if (error) return toast.error("Kunde inte spara.");
     done("Sparat");
   }
@@ -69,21 +69,21 @@ function Page() {
   async function move(list: Treatment[], i: number, dir: -1 | 1) {
     const a = list[i], b = list[i + dir];
     await Promise.all([
-      supabase.from("treatments").update({ sort_order: b.sort_order }).eq("id", a.id),
-      supabase.from("treatments").update({ sort_order: a.sort_order }).eq("id", b.id),
+      backend.from("treatments").update({ sort_order: b.sort_order }).eq("id", a.id),
+      backend.from("treatments").update({ sort_order: a.sort_order }).eq("id", b.id),
     ]);
     done("Ordningen är ändrad");
   }
 
   async function remove(id: string) {
-    const { error } = await supabase.from("treatments").delete().eq("id", id);
+    const { error } = await backend.from("treatments").delete().eq("id", id);
     if (error) return toast.error("Kunde inte ta bort.");
     done("Behandlingen är borttagen");
   }
 
   async function addCategory() {
     if (!newCat.trim()) return;
-    const { error } = await supabase.from("treatment_categories").insert({ name: newCat.trim(), sort_order: (data?.categories.length ?? 0) + 1 });
+    const { error } = await backend.from("treatment_categories").insert({ name: newCat.trim(), sort_order: (data?.categories.length ?? 0) + 1 });
     if (error) return toast.error("Kunde inte lägga till.");
     setNewCat("");
     done("Kategori tillagd");
@@ -91,12 +91,12 @@ function Page() {
 
   async function renameCategory(id: string, name: string) {
     if (!name.trim()) return;
-    await supabase.from("treatment_categories").update({ name: name.trim() }).eq("id", id);
+    await backend.from("treatment_categories").update({ name: name.trim() }).eq("id", id);
     done("Kategori sparad");
   }
 
   async function removeCategory(id: string) {
-    await supabase.from("treatment_categories").delete().eq("id", id);
+    await backend.from("treatment_categories").delete().eq("id", id);
     done("Kategori borttagen");
   }
 

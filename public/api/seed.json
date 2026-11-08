@@ -1,0 +1,621 @@
+{
+  "site_settings": [
+    {
+      "id": 1,
+      "content": {
+        "cta": {
+          "text": "Vi ser fram emot att välkomna dig till vår salong på Kungsholmen.",
+          "title": "Redo att boka din nästa klipptid?"
+        },
+        "seo": {
+          "home": {
+            "title": "Salong Ilinium – Frisör på Kungsholmen i Stockholm",
+            "description": "Välkommen till Salong Ilinium på Hantverkargatan 42, Kungsholmen. Se behandlingar, priser och våra frisörer. Ring 08-654 52 52 för att boka tid."
+          },
+          "team": {
+            "title": "Våra frisörer på Kungsholmen – Salong Ilinium",
+            "description": "Lär känna Linda, Jasmine och Pirjo på Salong Ilinium i Stockholm. Hitta kontaktuppgifter och ring din frisör direkt för att boka tid."
+          },
+          "about": {
+            "title": "Om Salong Ilinium – Frisörsalong på Kungsholmen",
+            "description": "Lär känna Salong Ilinium på Hantverkargatan i Stockholm. Möt våra frisörer och läs om salongens fokus på personlig service och omtanke."
+          },
+          "legal": {
+            "title": "Integritet & juridisk information – Salong Ilinium",
+            "description": "Läs om kontakt, telefonbokning, externa tjänster och integritet på Salong Iliniums webbplats. Kontakta salongen vid frågor om dina uppgifter."
+          },
+          "contact": {
+            "title": "Kontakt & boka tid – Salong Ilinium, Kungsholmen",
+            "description": "Hitta Salong Ilinium på Hantverkargatan 42, 112 21 Stockholm. Se kontaktuppgifter och karta. Ring 08-654 52 52 för att boka ditt frisörbesök."
+          },
+          "gallery": {
+            "title": "Galleri – Hår & inspiration hos Salong Ilinium",
+            "description": "Se bilder från Salong Ilinium på Kungsholmen och vårt arbete med hår. Hitta inspiration inför ditt nästa frisörbesök i Stockholm."
+          },
+          "treatments": {
+            "title": "Behandlingar & priser – Salong Ilinium, Kungsholmen",
+            "description": "Se priser för klippning, hårfärg och slingor hos Salong Ilinium på Kungsholmen i Stockholm. Ring salongen för prisuppgift och bokning."
+          }
+        },
+        "why": {
+          "items": [
+            {
+              "text": "En etablerad salong på Kungsholmen.",
+              "title": "Sedan 2006"
+            },
+            {
+              "text": "Vi värdesätter ett nära och personligt bemötande.",
+              "title": "Personlig service"
+            },
+            {
+              "text": "Vi vill att varje kund ska känna sig nöjd med sitt besök.",
+              "title": "Kvalitet i fokus"
+            }
+          ],
+          "title": "En salong där du står i centrum"
+        },
+        "hero": {
+          "text": "Välkommen till Salong Ilinium på Kungsholmen i Stockholm. Sedan 2006 har vi haft fokus på kvalitet, personlig service och att du som kund ska känna dig nöjd med ditt besök.",
+          "image": "/__l5e/assets-v1/c3760720-d90b-4de1-a4db-ee34b2fa442f/ilinium-salong-hero-2.png",
+          "title": "Vackert hår börjar med personlig omtanke.",
+          "eyebrow": "Välkommen till Salong Ilinium",
+          "ctaPrimary": "Ring och boka tid",
+          "ctaSecondary": "Se våra behandlingar"
+        },
+        "intro": {
+          "text": "Hos Salong Ilinium står du som kund i centrum. Vi lägger stor vikt vid personlig service, kvalitet och ett resultat som passar just dig. Vårt mål är att du ska lämna salongen nöjd och gärna rekommendera oss vidare.",
+          "image": "",
+          "title": "Din frisör på Kungsholmen sedan 2006"
+        },
+        "legal": {
+          "intro": "Information om kontakt, bokning och integritet på Salong Iliniums webbplats.",
+          "title": "Integritet & juridisk information",
+          "sections": [
+            {
+              "text": "Bokning hos Salong Ilinium sker endast via telefon. Webbplatsen har inget kontaktformulär eller någon onlinebokning. Använd salongens telefonnummer eller e-postadress nedan för frågor. Undvik att skicka känsliga personuppgifter via e-post.",
+              "title": "Kontakt och bokning"
+            },
+            {
+              "text": "Webbplatsen visar kartor från Google Maps och hämtar typsnitt från Google Fonts. När dessa resurser laddas skickar webbläsaren en förfrågan till Google. Länkar till Facebook och Instagram öppnar respektive extern tjänst. Deras egen integritetsinformation gäller när du använder tjänsterna.",
+              "title": "Externa tjänster och länkar"
+            },
+            {
+              "text": "Administratörsportalen kräver inloggning. Inloggningssessionen kan sparas i administratörens webbläsare för att hålla kontot inloggat. Besökare behöver inget konto för att läsa salongens sidor.",
+              "title": "Administratörsinloggning"
+            },
+            {
+              "text": "Kontakta Salong Ilinium om du har frågor om personuppgifter som du lämnat till salongen eller vill begära tillgång, rättelse eller radering. Vilka rättigheter som gäller beror på hur uppgifterna behandlas. Du kan även vända dig till Integritetsskyddsmyndigheten.",
+              "title": "Frågor om dina uppgifter"
+            },
+            {
+              "text": "Den här sidan beskriver webbplatsens kontaktvägar och kända externa resurser. För information om salongens hantering av bokningsuppgifter, lagringstider och leverantörer, kontakta salongen.",
+              "title": "Om informationen"
+            }
+          ]
+        },
+        "pages": {
+          "aboutText": "Mitt på Kungsholmen i Stockholm, på Hantverkargatan, hittar du vår lilla salong med ett stort hjärta. Sedan 2006 har vi välkomnat våra kunder med värme, glädje och personlig omtanke.\n\nFör oss handlar ett frisörbesök om mer än bara hår. Vi vill att du ska kunna koppla av, känna dig som hemma och njuta av en stund som bara är din.\n\nHos oss möter du Linda, Jasmine och Pirjo – tre frisörer som tillsammans skapar en varm och familjär atmosfär där varje kund är lika viktig.\n\nOavsett om du vill förnya din stil, fräscha upp håret eller bara unna dig en stunds avkoppling finns vi här för dig.\n\nVarmt välkommen till oss på Salong Ilinium. Vi ser fram emot att ta hand om dig! ❤️",
+          "teamIntro": "Linda och Jasmine driver salongen tillsammans. Ring din frisör direkt för att boka tid.",
+          "teamTitle": "Lär känna våra frisörer",
+          "aboutImage": "/__l5e/assets-v1/dfd86635-9238-4698-af41-beda827343da/ilinium-team-about.png",
+          "aboutTitle": "Välkommen till Salong Ilinium",
+          "contactIntro": "Vill du boka tid eller har du frågor om våra behandlingar? Ring oss gärna så hjälper vi dig.",
+          "contactTitle": "Kontakta oss",
+          "galleryIntro": "Bilder från salongen och vårt arbete.",
+          "galleryTitle": "Galleri",
+          "treatmentsIntro": "Utforska våra klippningar och färgbehandlingar. Kontakta oss gärna om du vill veta mer eller få en mer exakt prisuppgift för ditt hår.",
+          "treatmentsTerms": "Priserna kan komma att ändras.\nTvätt och föning ingår i klippningar och behandlingar, utom barnklippning.\nFrånpriser för behandlingar gäller kort hår.\nSlutpriset beror på materialåtgång och tidsåtgång.\nFråga gärna oss om en mer exakt prisuppgift.\nOm klippning inte ingår i behandlingen dras 200 kr av från totalpriset.",
+          "treatmentsTitle": "Behandlingar & priser"
+        },
+        "footer": {
+          "tagline": "Personlig service och kvalitet på Kungsholmen sedan 2006."
+        },
+        "social": {
+          "website": "https://www.ilinium.se/",
+          "facebook": "https://www.facebook.com/salongilinium/",
+          "facebookLinda": "https://www.facebook.com/iliniumlinda/",
+          "instagramLinda": "https://www.instagram.com/ilinium_frisorlinda/",
+          "instagramJasmine": "https://www.instagram.com/ilinium_frisorjasmine/"
+        },
+        "contact": {
+          "area": "Kungsholmen",
+          "email": "ilinium@gmail.com",
+          "phone": "08-654 52 52",
+          "postal": "112 21 Stockholm",
+          "street": "Hantverkargatan 42",
+          "mapsUrl": "https://share.google/j5v37bTs5KNraVuFl",
+          "hoursNote": "Öppettiderna är hämtade från en extern katalog (jan 2024) och behöver bekräftas.",
+          "bookingInfo": "Bokning sker endast via telefon.",
+          "cancellation": "Avbokning senast 24 timmar före bokad tid."
+        },
+        "sections": {
+          "cta": true,
+          "why": true,
+          "team": true,
+          "intro": false,
+          "gallery": true,
+          "location": true,
+          "treatments": true
+        },
+        "skincare": {
+          "text": "Vi kommer snart även kunna erbjuda hudvård.",
+          "title": "Hudvård",
+          "enabled": false
+        },
+        "teamSection": {
+          "title": "Möt våra frisörer",
+          "subtitle": "Personligt bemötande och fokus på ditt hår."
+        },
+        "announcement": {
+          "text": "",
+          "enabled": false
+        },
+        "sectionOrder": [
+          "intro",
+          "treatments",
+          "team",
+          "gallery",
+          "why",
+          "location",
+          "cta"
+        ],
+        "gallerySection": {
+          "title": "Inspiration från salongen"
+        },
+        "treatmentsSection": {
+          "title": "Upptäck våra behandlingar"
+        }
+      },
+      "updated_at": "2026-11-07T08:36:29.272319+00:00"
+    }
+  ],
+  "treatment_categories": [
+    {
+      "id": "0c048f31-b8bf-40de-8910-5c14f29b245a",
+      "name": "Klippning",
+      "sort_order": 1
+    },
+    {
+      "id": "e24dc939-d3b2-43b1-b53c-ebf8f50cce28",
+      "name": "Färg & slingor",
+      "sort_order": 2
+    }
+  ],
+  "treatments": [
+    {
+      "id": "66a2149c-b759-432e-83cb-34c20b052d34",
+      "category_id": "e24dc939-d3b2-43b1-b53c-ebf8f50cce28",
+      "name": "Klipp & färg",
+      "description": "För dig som vill kombinera en klippning med en ny hårfärg.",
+      "price": 1590,
+      "price_from": true,
+      "image_url": "/images/klipp-farg.jpg",
+      "featured": true,
+      "visible": true,
+      "sort_order": 1
+    },
+    {
+      "id": "afbd7171-e577-4706-aacc-30d5c373b7a4",
+      "category_id": "0c048f31-b8bf-40de-8910-5c14f29b245a",
+      "name": "Klippning",
+      "description": "En klippning anpassad efter ditt hår och dina önskemål.",
+      "price": 600,
+      "price_from": false,
+      "image_url": "/images/klippning.jpg",
+      "featured": true,
+      "visible": true,
+      "sort_order": 2
+    },
+    {
+      "id": "3f033cf7-bcea-4676-949a-d16c67e2506b",
+      "category_id": "e24dc939-d3b2-43b1-b53c-ebf8f50cce28",
+      "name": "Klipp & sling (hätta, kort hår)",
+      "description": "",
+      "price": 1600,
+      "price_from": true,
+      "image_url": null,
+      "featured": false,
+      "visible": true,
+      "sort_order": 2
+    },
+    {
+      "id": "0594a873-89ba-4e09-9dc5-9dee65f87d5d",
+      "category_id": "e24dc939-d3b2-43b1-b53c-ebf8f50cce28",
+      "name": "Klipp & foliesling",
+      "description": "För dig som vill skapa liv, variation och dimension i håret.",
+      "price": 1800,
+      "price_from": true,
+      "image_url": "/images/klipp-foliesling.jpg",
+      "featured": true,
+      "visible": true,
+      "sort_order": 3
+    },
+    {
+      "id": "c75efbf9-0274-4d67-b0de-4a1e1cc42511",
+      "category_id": "0c048f31-b8bf-40de-8910-5c14f29b245a",
+      "name": "Klippning hos Pirjo",
+      "description": "",
+      "price": 660,
+      "price_from": false,
+      "image_url": null,
+      "featured": false,
+      "visible": true,
+      "sort_order": 3
+    },
+    {
+      "id": "e8a400c9-2c7c-4203-ae17-23348ccbc886",
+      "category_id": "e24dc939-d3b2-43b1-b53c-ebf8f50cce28",
+      "name": "Klipp, färg & sling",
+      "description": "",
+      "price": 1850,
+      "price_from": true,
+      "image_url": null,
+      "featured": false,
+      "visible": true,
+      "sort_order": 4
+    },
+    {
+      "id": "8339c6bd-c6dd-4cad-8495-e7676dd0a534",
+      "category_id": "0c048f31-b8bf-40de-8910-5c14f29b245a",
+      "name": "Klippning avancerad",
+      "description": "",
+      "price": 690,
+      "price_from": false,
+      "image_url": null,
+      "featured": false,
+      "visible": true,
+      "sort_order": 4
+    },
+    {
+      "id": "ec971007-9836-417a-85f9-e73be5a8b49d",
+      "category_id": "0c048f31-b8bf-40de-8910-5c14f29b245a",
+      "name": "Barnklippning (t.o.m. 8 år)",
+      "description": "Klippning för barn till och med 8 år.",
+      "price": 400,
+      "price_from": false,
+      "image_url": "/images/barnklippning.jpg",
+      "featured": true,
+      "visible": true,
+      "sort_order": 5
+    },
+    {
+      "id": "630c2603-b3fd-41e6-a5ef-6b792f47e90c",
+      "category_id": "0c048f31-b8bf-40de-8910-5c14f29b245a",
+      "name": "Klippning med maskin",
+      "description": "",
+      "price": 9000,
+      "price_from": false,
+      "image_url": null,
+      "featured": false,
+      "visible": true,
+      "sort_order": 1
+    }
+  ],
+  "staff": [
+    {
+      "id": "d165ab62-1b0a-4310-817d-a715bc338ea5",
+      "name": "Pirjo",
+      "role": "Frisör",
+      "bio": "",
+      "phone": "08-654 52 52",
+      "image_url": "/images/pirjo.jpg",
+      "facebook_url": null,
+      "instagram_url": null,
+      "visible": true,
+      "sort_order": 3
+    },
+    {
+      "id": "ee08f922-d38e-42d7-bb95-48a5099ae511",
+      "name": "Linda",
+      "role": "Salongsägare & frisör",
+      "bio": "",
+      "phone": "0736-520430",
+      "image_url": "/images/linda.jpg",
+      "facebook_url": "https://www.facebook.com/iliniumlinda/",
+      "instagram_url": "https://www.instagram.com/ilinium_frisorlinda/",
+      "visible": true,
+      "sort_order": 1
+    },
+    {
+      "id": "c20c291e-2571-40c3-9be0-91f5336463de",
+      "name": "Jasmine",
+      "role": "Salongsägare & frisör",
+      "bio": "",
+      "phone": "0739-529010",
+      "image_url": "/images/jasmine.jpg",
+      "facebook_url": null,
+      "instagram_url": "https://www.instagram.com/ilinium_frisorjasmine/",
+      "visible": true,
+      "sort_order": 2
+    }
+  ],
+  "gallery_images": [
+    {
+      "id": "3c33148c-1ca8-450b-a22b-cd7877b08d18",
+      "url": "/images/salong.jpg",
+      "alt": "Salong Ilinium – bild från salongen",
+      "caption": "Från salongen",
+      "visible": true,
+      "sort_order": 1
+    },
+    {
+      "id": "5458932d-f6a7-4dfb-a3b2-b76b9ef9cb6f",
+      "url": "/images/galleri-2.jpg",
+      "alt": "Frisyr från Salong Ilinium",
+      "caption": "",
+      "visible": true,
+      "sort_order": 2
+    },
+    {
+      "id": "84f839bb-7c60-4d87-bc6b-b270248fe44c",
+      "url": "/images/galleri-3.jpg",
+      "alt": "Frisyr från Salong Ilinium",
+      "caption": "",
+      "visible": true,
+      "sort_order": 3
+    },
+    {
+      "id": "79605b72-ed28-4476-8fb9-33f61be923cd",
+      "url": "/images/bild34.jpg",
+      "alt": "Bild från Salong Ilinium",
+      "caption": "",
+      "visible": true,
+      "sort_order": 4
+    },
+    {
+      "id": "716ebf64-5897-4d4b-ab4a-97d0d7141810",
+      "url": "/images/galleri-5.jpg",
+      "alt": "Kollegorna utanför salongen",
+      "caption": "",
+      "visible": true,
+      "sort_order": 5
+    },
+    {
+      "id": "2bc3a7eb-6f3f-43e8-99d5-8b35e6745a4c",
+      "url": "/images/galleri-6.jpg",
+      "alt": "Styling med glans i salongen",
+      "caption": "",
+      "visible": true,
+      "sort_order": 6
+    },
+    {
+      "id": "0c98a10d-dfd0-40b8-bf6d-2fc7476829ee",
+      "url": "/images/galleri-7.jpg",
+      "alt": "Kväll med kollegorna",
+      "caption": "",
+      "visible": true,
+      "sort_order": 7
+    },
+    {
+      "id": "22567462-bd03-4b27-983e-4c25c8c26d6e",
+      "url": "/images/galleri-8.jpg",
+      "alt": "Frisörstunder i salongen",
+      "caption": "",
+      "visible": true,
+      "sort_order": 8
+    },
+    {
+      "id": "4883b556-b677-427e-9856-90b98426e389",
+      "url": "/images/galleri-9.jpg",
+      "alt": "Två kollegor i salongen",
+      "caption": "I salongen",
+      "visible": true,
+      "sort_order": 9
+    }
+  ],
+  "opening_hours": [
+    {
+      "weekday": 1,
+      "opens": "10:00:00",
+      "closes": "19:00:00",
+      "closed": false
+    },
+    {
+      "weekday": 2,
+      "opens": "10:00:00",
+      "closes": "19:00:00",
+      "closed": false
+    },
+    {
+      "weekday": 3,
+      "opens": "10:00:00",
+      "closes": "19:00:00",
+      "closed": false
+    },
+    {
+      "weekday": 4,
+      "opens": "10:00:00",
+      "closes": "19:00:00",
+      "closed": false
+    },
+    {
+      "weekday": 5,
+      "opens": "10:00:00",
+      "closes": "19:00:00",
+      "closed": false
+    },
+    {
+      "weekday": 6,
+      "opens": null,
+      "closes": null,
+      "closed": true
+    },
+    {
+      "weekday": 7,
+      "opens": null,
+      "closes": null,
+      "closed": true
+    }
+  ],
+  "special_opening_hours": [],
+  "site_settings_draft": [
+    {
+      "id": 1,
+      "content": {
+        "cta": {
+          "text": "Vi ser fram emot att välkomna dig till vår salong på Kungsholmen.",
+          "title": "Redo att boka din nästa klipptid?"
+        },
+        "seo": {
+          "home": {
+            "title": "Salong Ilinium – Frisör på Kungsholmen i Stockholm",
+            "description": "Välkommen till Salong Ilinium på Hantverkargatan 42, Kungsholmen. Se behandlingar, priser och våra frisörer. Ring 08-654 52 52 för att boka tid."
+          },
+          "team": {
+            "title": "Våra frisörer på Kungsholmen – Salong Ilinium",
+            "description": "Lär känna Linda, Jasmine och Pirjo på Salong Ilinium i Stockholm. Hitta kontaktuppgifter och ring din frisör direkt för att boka tid."
+          },
+          "about": {
+            "title": "Om Salong Ilinium – Frisörsalong på Kungsholmen",
+            "description": "Lär känna Salong Ilinium på Hantverkargatan i Stockholm. Möt våra frisörer och läs om salongens fokus på personlig service och omtanke."
+          },
+          "legal": {
+            "title": "Integritet & juridisk information – Salong Ilinium",
+            "description": "Läs om kontakt, telefonbokning, externa tjänster och integritet på Salong Iliniums webbplats. Kontakta salongen vid frågor om dina uppgifter."
+          },
+          "contact": {
+            "title": "Kontakt & boka tid – Salong Ilinium, Kungsholmen",
+            "description": "Hitta Salong Ilinium på Hantverkargatan 42, 112 21 Stockholm. Se kontaktuppgifter och karta. Ring 08-654 52 52 för att boka ditt frisörbesök."
+          },
+          "gallery": {
+            "title": "Galleri – Hår & inspiration hos Salong Ilinium",
+            "description": "Se bilder från Salong Ilinium på Kungsholmen och vårt arbete med hår. Hitta inspiration inför ditt nästa frisörbesök i Stockholm."
+          },
+          "treatments": {
+            "title": "Behandlingar & priser – Salong Ilinium, Kungsholmen",
+            "description": "Se priser för klippning, hårfärg och slingor hos Salong Ilinium på Kungsholmen i Stockholm. Ring salongen för prisuppgift och bokning."
+          }
+        },
+        "why": {
+          "items": [
+            {
+              "text": "En etablerad salong på Kungsholmen.",
+              "title": "Sedan 2006"
+            },
+            {
+              "text": "Vi värdesätter ett nära och personligt bemötande.",
+              "title": "Personlig service"
+            },
+            {
+              "text": "Vi vill att varje kund ska känna sig nöjd med sitt besök.",
+              "title": "Kvalitet i fokus"
+            }
+          ],
+          "title": "En salong där du står i centrum"
+        },
+        "hero": {
+          "text": "Välkommen till Salong Ilinium på Kungsholmen i Stockholm. Sedan 2006 har vi haft fokus på kvalitet, personlig service och att du som kund ska känna dig nöjd med ditt besök.",
+          "image": "/__l5e/assets-v1/c3760720-d90b-4de1-a4db-ee34b2fa442f/ilinium-salong-hero-2.png",
+          "title": "Vackert hår börjar med personlig omtanke.",
+          "eyebrow": "Välkommen till Salong Ilinium",
+          "ctaPrimary": "Ring och boka tid",
+          "ctaSecondary": "Se våra behandlingar"
+        },
+        "intro": {
+          "text": "Hos Salong Ilinium står du som kund i centrum. Vi lägger stor vikt vid personlig service, kvalitet och ett resultat som passar just dig. Vårt mål är att du ska lämna salongen nöjd och gärna rekommendera oss vidare.",
+          "image": "",
+          "title": "Din frisör på Kungsholmen sedan 2006"
+        },
+        "legal": {
+          "intro": "Information om kontakt, bokning och integritet på Salong Iliniums webbplats.",
+          "title": "Integritet & juridisk information",
+          "sections": [
+            {
+              "text": "Bokning hos Salong Ilinium sker endast via telefon. Webbplatsen har inget kontaktformulär eller någon onlinebokning. Använd salongens telefonnummer eller e-postadress nedan för frågor. Undvik att skicka känsliga personuppgifter via e-post.",
+              "title": "Kontakt och bokning"
+            },
+            {
+              "text": "Webbplatsen visar kartor från Google Maps och hämtar typsnitt från Google Fonts. När dessa resurser laddas skickar webbläsaren en förfrågan till Google. Länkar till Facebook och Instagram öppnar respektive extern tjänst. Deras egen integritetsinformation gäller när du använder tjänsterna.",
+              "title": "Externa tjänster och länkar"
+            },
+            {
+              "text": "Administratörsportalen kräver inloggning. Inloggningssessionen kan sparas i administratörens webbläsare för att hålla kontot inloggat. Besökare behöver inget konto för att läsa salongens sidor.",
+              "title": "Administratörsinloggning"
+            },
+            {
+              "text": "Kontakta Salong Ilinium om du har frågor om personuppgifter som du lämnat till salongen eller vill begära tillgång, rättelse eller radering. Vilka rättigheter som gäller beror på hur uppgifterna behandlas. Du kan även vända dig till Integritetsskyddsmyndigheten.",
+              "title": "Frågor om dina uppgifter"
+            },
+            {
+              "text": "Den här sidan beskriver webbplatsens kontaktvägar och kända externa resurser. För information om salongens hantering av bokningsuppgifter, lagringstider och leverantörer, kontakta salongen.",
+              "title": "Om informationen"
+            }
+          ]
+        },
+        "pages": {
+          "aboutText": "Mitt på Kungsholmen i Stockholm, på Hantverkargatan, hittar du vår lilla salong med ett stort hjärta. Sedan 2006 har vi välkomnat våra kunder med värme, glädje och personlig omtanke.\n\nFör oss handlar ett frisörbesök om mer än bara hår. Vi vill att du ska kunna koppla av, känna dig som hemma och njuta av en stund som bara är din.\n\nHos oss möter du Linda, Jasmine och Pirjo – tre frisörer som tillsammans skapar en varm och familjär atmosfär där varje kund är lika viktig.\n\nOavsett om du vill förnya din stil, fräscha upp håret eller bara unna dig en stunds avkoppling finns vi här för dig.\n\nVarmt välkommen till oss på Salong Ilinium. Vi ser fram emot att ta hand om dig! ❤️",
+          "teamIntro": "Linda och Jasmine driver salongen tillsammans. Ring din frisör direkt för att boka tid.",
+          "teamTitle": "Lär känna våra frisörer",
+          "aboutImage": "/__l5e/assets-v1/dfd86635-9238-4698-af41-beda827343da/ilinium-team-about.png",
+          "aboutTitle": "Välkommen till Salong Ilinium",
+          "contactIntro": "Vill du boka tid eller har du frågor om våra behandlingar? Ring oss gärna så hjälper vi dig.",
+          "contactTitle": "Kontakta oss",
+          "galleryIntro": "Bilder från salongen och vårt arbete.",
+          "galleryTitle": "Galleri",
+          "treatmentsIntro": "Utforska våra klippningar och färgbehandlingar. Kontakta oss gärna om du vill veta mer eller få en mer exakt prisuppgift för ditt hår.",
+          "treatmentsTerms": "Priserna kan komma att ändras.\nTvätt och föning ingår i klippningar och behandlingar, utom barnklippning.\nFrånpriser för behandlingar gäller kort hår.\nSlutpriset beror på materialåtgång och tidsåtgång.\nFråga gärna oss om en mer exakt prisuppgift.\nOm klippning inte ingår i behandlingen dras 200 kr av från totalpriset.",
+          "treatmentsTitle": "Behandlingar & priser"
+        },
+        "footer": {
+          "tagline": "Personlig service och kvalitet på Kungsholmen sedan 2006."
+        },
+        "social": {
+          "website": "https://www.ilinium.se/",
+          "facebook": "https://www.facebook.com/salongilinium/",
+          "facebookLinda": "https://www.facebook.com/iliniumlinda/",
+          "instagramLinda": "https://www.instagram.com/ilinium_frisorlinda/",
+          "instagramJasmine": "https://www.instagram.com/ilinium_frisorjasmine/"
+        },
+        "contact": {
+          "area": "Kungsholmen",
+          "email": "ilinium@gmail.com",
+          "phone": "08-654 52 52",
+          "postal": "112 21 Stockholm",
+          "street": "Hantverkargatan 42",
+          "mapsUrl": "https://share.google/j5v37bTs5KNraVuFl",
+          "hoursNote": "Öppettiderna är hämtade från en extern katalog (jan 2024) och behöver bekräftas.",
+          "bookingInfo": "Bokning sker endast via telefon.",
+          "cancellation": "Avbokning senast 24 timmar före bokad tid."
+        },
+        "sections": {
+          "cta": true,
+          "why": true,
+          "team": true,
+          "intro": false,
+          "gallery": true,
+          "location": true,
+          "treatments": true
+        },
+        "skincare": {
+          "text": "Vi kommer snart även kunna erbjuda hudvård.",
+          "title": "Hudvård",
+          "enabled": false
+        },
+        "teamSection": {
+          "title": "Möt våra frisörer",
+          "subtitle": "Personligt bemötande och fokus på ditt hår."
+        },
+        "announcement": {
+          "text": "",
+          "enabled": false
+        },
+        "sectionOrder": [
+          "intro",
+          "treatments",
+          "team",
+          "gallery",
+          "why",
+          "location",
+          "cta"
+        ],
+        "gallerySection": {
+          "title": "Inspiration från salongen"
+        },
+        "treatmentsSection": {
+          "title": "Upptäck våra behandlingar"
+        }
+      },
+      "updated_at": "2026-11-07T08:36:29.272319+00:00"
+    }
+  ]
+}

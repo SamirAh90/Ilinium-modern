@@ -1,11 +1,8 @@
 Options -Indexes
 RewriteEngine On
 
-# Existing CMS media URLs are streamed through PHP from the private Supabase bucket.
-RewriteRule ^api/public/media/(.+)$ api/media.php?path=$1 [QSA,L,NC]
-
 # Never expose server-side credentials.
-RewriteRule ^api/config\.php$ - [F,L,NC]
+RewriteRule ^api/(config|bootstrap|schema|seed)\.(php|sql|json)$ - [F,L,NC]
 
 # Let Apache serve real files and directories directly.
 RewriteCond %{REQUEST_FILENAME} -f [OR]

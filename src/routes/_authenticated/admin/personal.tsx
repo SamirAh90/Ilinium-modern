@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AdminPage, Card, Field, ImageInput, Loading, MoveButtons } from "@/components/admin/ui";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 import { useInvalidatePublic } from "@/lib/admin";
 import type { Staff } from "@/lib/content";
 
@@ -22,7 +22,7 @@ function Page() {
   const { data, refetch, isLoading } = useQuery({
     queryKey: ["admin", "staff"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("staff").select("*").order("sort_order");
+      const { data, error } = await backend.from("staff").select("*").order("sort_order");
       if (error) throw error;
       return data as Staff[];
     },
@@ -39,7 +39,7 @@ function Page() {
       name: edit.name.trim(), role: edit.role ?? "", bio: edit.bio ?? "", phone: edit.phone ?? "",
       image_url: edit.image_url || null, facebook_url: url(edit.facebook_url), instagram_url: url(edit.instagram_url), visible: edit.visible ?? true,
     };
-    const res = edit.id ? await supabase.from("staff").update(row).eq("id", edit.id) : await supabase.from("staff").insert({ ...row, sort_order: (data?.length ?? 0) + 1 });
+    const res = edit.id ? await backend.from("staff").update(row).eq("id", edit.id) : await backend.from("staff").insert({ ...row, sort_order: (data?.length ?? 0) + 1 });
     if (res.error) return toast.error("Kunde inte spara.");
     setEdit(null);
     done("Sparat");
@@ -49,8 +49,8 @@ function Page() {
     if (!data) return;
     const a = data[i], b = data[i + dir];
     await Promise.all([
-      supabase.from("staff").update({ sort_order: b.sort_order }).eq("id", a.id),
-      supabase.from("staff").update({ sort_order: a.sort_order }).eq("id", b.id),
+      backend.from("staff").update({ sort_order: b.sort_order }).eq("id", a.id),
+      backend.from("staff").update({ sort_order: a.sort_order }).eq("id", b.id),
     ]);
     done("Ordningen är ändrad");
   }
@@ -68,13 +68,13 @@ function Page() {
                 <p className="font-medium">{s.name}</p>
                 <p className="text-sm text-muted-foreground">{s.role} · {s.phone}</p>
               </button>
-              <Switch checked={s.visible} onCheckedChange={async (v) => { await supabase.from("staff").update({ visible: v }).eq("id", s.id); done(v ? "Visas på hemsidan" : "Dold"); }} aria-label="Synlig" />
+              <Switch checked={s.visible} onCheckedChange={async (v) => { await backend.from("staff").update({ visible: v }).eq("id", s.id); done(v ? "Visas på hemsidan" : "Dold"); }} aria-label="Synlig" />
               <Button variant="ghost" size="icon" onClick={() => setEdit(s)} aria-label="Redigera"><Pencil /></Button>
               <AlertDialog>
                 <AlertDialogTrigger asChild><Button variant="ghost" size="icon" aria-label="Ta bort"><Trash2 /></Button></AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader><AlertDialogTitle>Ta bort {s.name}?</AlertDialogTitle><AlertDialogDescription>Profilen försvinner från hemsidan. Vill du bara dölja den, använd reglaget istället.</AlertDialogDescription></AlertDialogHeader>
-                  <AlertDialogFooter><AlertDialogCancel>Avbryt</AlertDialogCancel><AlertDialogAction onClick={async () => { await supabase.from("staff").delete().eq("id", s.id); done("Borttagen"); }}>Ta bort</AlertDialogAction></AlertDialogFooter>
+                  <AlertDialogFooter><AlertDialogCancel>Avbryt</AlertDialogCancel><AlertDialogAction onClick={async () => { await backend.from("staff").delete().eq("id", s.id); done("Borttagen"); }}>Ta bort</AlertDialogAction></AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
             </li>

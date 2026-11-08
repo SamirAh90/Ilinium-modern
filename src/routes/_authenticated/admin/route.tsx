@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Clock, ExternalLink, FileText, Home, Images, LayoutGrid, LogOut, Menu, Phone, Scissors, Search, Send, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
     ],
   }),
   beforeLoad: async ({ context }) => {
-    const { data } = await supabase.from("user_roles").select("role").eq("user_id", context.user.id).eq("role", "admin").maybeSingle();
+    const { data } = await backend.from("user_roles").select("role").eq("user_id", context.user.id).eq("role", "admin").maybeSingle();
     if (!data) throw redirect({ to: "/ingen-behorighet" });
   },
   component: AdminLayout,
@@ -46,7 +46,7 @@ function AdminLayout() {
   async function signOut() {
     await qc.cancelQueries();
     qc.clear();
-    await supabase.auth.signOut();
+    await backend.auth.signOut();
     navigate({ to: "/auth", replace: true });
   }
 

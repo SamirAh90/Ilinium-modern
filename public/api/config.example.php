@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
-
 return [
-    'supabase_url' => 'https://YOUR-PROJECT.supabase.co',
-    // Use the secret service-role JWT from Supabase. Never use this value in VITE_* variables.
-    'supabase_service_role_key' => 'YOUR-SERVICE-ROLE-JWT',
+    'db_host' => 'database-##########.webspace-host.com', 'db_name' => 'dbs#######',
+    'db_user' => 'dbu#######', 'db_password' => 'CHANGE-ME',
+    'site_url' => 'https://www.ilinium.se', 'setup_key' => 'CHANGE-TO-A-LONG-RANDOM-SECRET',
+    'admin_email' => 'ilinium@gmail.com', 'admin_password' => 'CHANGE-TO-A-STRONG-ADMIN-PASSWORD',
+    'mail_from' => 'noreply@ilinium.se',
 ];

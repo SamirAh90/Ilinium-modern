@@ -5,7 +5,7 @@ import { Scissors } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -33,12 +33,12 @@ function AuthPage() {
     e.preventDefault();
     setBusy(true);
     if (mode === "login") {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await backend.auth.signInWithPassword({ email, password });
       setBusy(false);
       if (error) return toast.error("Fel e-post eller lösenord.");
       navigate({ to: "/admin" });
     } else {
-      const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
+      const { error } = await backend.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
       setBusy(false);
       if (error) return toast.error("Kunde inte skicka e-post. Försök igen.");
       toast.success("Om adressen finns har vi skickat en länk för att välja nytt lösenord.");

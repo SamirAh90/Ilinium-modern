@@ -1,0 +1,10 @@
+<?php
+declare(strict_types=1);
+function json_response(mixed $payload, int $status = 200): never { http_response_code($status); header('Content-Type: application/json; charset=utf-8'); header('Cache-Control: no-store'); echo json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); exit; }
+function config(): array { static $v; if ($v !== null) return $v; $f=__DIR__.'/config.php'; if (!is_file($f)) json_response(['error'=>'Servern är inte konfigurerad.'],503); return $v=require $f; }
+function db(): PDO { static $p; if ($p instanceof PDO) return $p; $c=config(); $p=new PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8mb4',$c['db_host'],$c['db_name']),$c['db_user'],$c['db_password'],[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC,PDO::ATTR_EMULATE_PREPARES=>false]); return $p; }
+function start_secure_session(): void { if(session_status()===PHP_SESSION_ACTIVE)return; session_name('ilinium_admin'); session_set_cookie_params(['httponly'=>true,'secure'=>!empty($_SERVER['HTTPS']),'samesite'=>'Lax','path'=>'/']); session_start(); }
+function body(): array { $v=json_decode(file_get_contents('php://input')?:'{}',true); return is_array($v)?$v:[]; }
+function require_admin(): array { start_secure_session(); if(empty($_SESSION['user_id']))json_response(['error'=>'Du måste logga in.'],401); return ['id'=>$_SESSION['user_id'],'email'=>$_SESSION['email']]; }
+function uuid(): string { $d=random_bytes(16); $d[6]=chr((ord($d[6])&15)|64); $d[8]=chr((ord($d[8])&63)|128); return vsprintf('%s%s-%s-%s-%s-%s%s%s',str_split(bin2hex($d),4)); }
+function normalize_row(array $r): array { if(isset($r['content'])&&is_string($r['content']))$r['content']=json_decode($r['content'],true); foreach(['visible','featured','price_from','closed'] as $k)if(array_key_exists($k,$r))$r[$k]=(bool)$r[$k]; return $r; }

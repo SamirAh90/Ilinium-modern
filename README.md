@@ -1,39 +1,22 @@
 # Salong Ilinium
 
-Independent website and CMS for Salong Ilinium. The production frontend is a static React build for STRATO Basic web hosting; content, authentication, and the database remain in Supabase.
+Self-hosted website and CMS for Salong Ilinium. The complete production system runs on STRATO Basic: static React frontend, PHP 8 API, MySQL/MariaDB, administrator sessions, password reset, and local image uploads.
 
-## Local development
-
-Requirements: Node.js 22 or newer and npm.
+## Commands
 
 ```sh
-cp .env.example .env
 npm install
-npm run dev
-```
-
-The required browser-safe variables are documented in `.env.example`.
-
-## Validation
-
-```sh
 npm test
-npm run build
-```
-
-## STRATO deployment
-
-See `STRATO-DEPLOYMENT.md`. Build the upload-ready folder with:
-
-```sh
+npm run export:content
 npm run build:strato
 ```
 
-Upload the contents of `dist/` to the domain's document root. Do not upload the source repository or `.env`.
+The exported public salon content is stored in `public/api/seed.json` and imported by the one-time installer. See `STRATO-DEPLOYMENT.md` for the complete setup.
 
-## Technology
+## Security
 
-- React, TypeScript, Vite, and TanStack Router
-- Tailwind CSS
-- Supabase database, authentication, and storage
-- A small PHP media proxy for the private Supabase storage bucket
+- Database credentials exist only in ignored `api/config.php`.
+- Passwords use PHP's `password_hash` and are never stored as plaintext in MySQL.
+- Admin sessions use HTTP-only, Secure, SameSite cookies.
+- Database operations use prepared statements and strict table/column allowlists.
+- Uploaded files are MIME-validated and script execution is blocked in `uploads/`.

@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Eye, RotateCcw, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AdminPage, Card, Loading } from "@/components/admin/ui";
-import { supabase } from "@/integrations/supabase/client";
+import { backend } from "@/lib/backend";
 import { draftQuery, publishDraft, publishedQuery, saveDraft, useInvalidatePublic } from "@/lib/admin";
 import type { SiteContent } from "@/lib/content";
 
@@ -17,7 +17,7 @@ function Page() {
   const versions = useQuery({
     queryKey: ["admin", "versions"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("content_versions").select("id, created_at, note, content").order("created_at", { ascending: false }).limit(20);
+      const { data, error } = await backend.from("content_versions").select("id, created_at, note, content").order("created_at", { ascending: false }).limit(20);
       if (error) throw error;
       return data;
     },
@@ -59,7 +59,7 @@ function Page() {
       <Card title="Tidigare versioner">
         {versions.isLoading ? <Loading /> : (
           <ul className="divide-y divide-border">
-            {(versions.data ?? []).map((v) => (
+            {(versions.data ?? []).map((v: { id: string; created_at: string; note: string; content: unknown }) => (
               <li key={v.id} className="flex items-center justify-between gap-3 py-3 text-sm">
                 <span>{new Date(v.created_at).toLocaleString("sv-SE")} <span className="text-muted-foreground">· {v.note}</span></span>
                 <Button variant="ghost" size="sm" onClick={() => restore(v.content)} disabled={busy}><RotateCcw /> Återställ</Button>

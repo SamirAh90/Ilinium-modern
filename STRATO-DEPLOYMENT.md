@@ -1,37 +1,51 @@
-# Deploy to STRATO Basic
+# Complete STRATO deployment
 
-The app is designed for STRATO's Apache/PHP shared hosting. Node.js is needed only on the development computer to create `dist/`; it is not needed on STRATO.
+This version has no production dependency on Supabase or another application server. STRATO serves the frontend, PHP API, MySQL database, administrator login, and uploaded images.
 
-## 1. Build
+## 1. Create the STRATO database
 
-Copy `.env.example` to `.env` and set the publishable Supabase values and final site URL. Then run:
+In STRATO open **Databaser och webbutrymme → Hantering av databaser → Skapa databas**. Record the database server, database name, username, and chosen password. Select the latest PHP 8 version under **Ställ in PHP-version**.
+
+## 2. Configure
+
+Copy `public/api/config.example.php` to `public/api/config.php` and enter the STRATO database details. Also choose:
+
+- a random `setup_key` of at least 32 characters;
+- the initial administrator email;
+- a unique administrator password of at least 12 characters;
+- the final HTTPS site URL and sender address.
+
+`config.php` is ignored by Git and blocked from browser access by `.htaccess`.
+
+## 3. Export and build
+
+While the old content source is still available, run:
 
 ```sh
 npm install
+npm run export:content
+npm test
 npm run build:strato
 ```
 
-## 2. Configure private media
+The output is in `dist/`. If `public/api/config.php` exists, the build securely copies it to `dist/api/config.php`; it is never committed.
 
-Copy `dist/api/config.example.php` to `dist/api/config.php` and replace both placeholders. The service-role JWT is found in Supabase project settings under API keys. It must exist only in this PHP file and must never be put in a `VITE_*` variable.
+## 4. Upload
 
-The included `.htaccess` blocks browser access to `api/config.php`.
+Upload the **contents** of `dist/` to the STRATO domain's document root using SFTP or the file manager. Include hidden files so both `.htaccess` files are transferred. Activate SSL and force HTTPS in STRATO.
 
-## 3. Upload
+Ensure PHP can write to `uploads/` (normally permissions `755`).
 
-In STRATO's file manager or with SFTP, upload the **contents** of `dist/` to the document root assigned to the domain. Ensure hidden files are included so `.htaccess` is uploaded.
+## 5. Install
 
-Recommended STRATO settings:
+Open `https://YOUR-DOMAIN/api/install.php`, enter the `setup_key`, and run the installer. It creates all tables, imports the current salon content, and creates the initial administrator.
 
-- Enable the latest available PHP 8 version.
-- Point the domain to the upload directory.
-- Activate the included SSL certificate and force HTTPS in STRATO.
-- Add both `https://ilinium.se/reset-password` and `https://www.ilinium.se/reset-password` to Supabase Authentication redirect URLs, matching the chosen canonical domain.
+Immediately after success, delete `api/install.php` from the webspace. Then log in at `/auth`.
 
-## 4. Verify
+## 6. Verify
 
-Check `/`, `/behandlingar`, `/galleri`, `/auth`, and `/admin`. Also open an uploaded CMS image URL beginning with `/api/public/media/` to verify PHP/cURL and the service key.
+Check `/`, `/behandlingar`, `/galleri`, `/auth`, `/admin`, an image upload, draft publishing, logout, and password reset. PHP `mail()` delivery depends on the domain's STRATO mail configuration.
 
-## Updating
+## Updates
 
-Run `npm run build:strato` again and replace the deployed files, preserving the server-only `api/config.php` if it is not present in the new build.
+Build again and upload the changed files. Preserve `api/config.php` and `uploads/`. Do not rerun the installer for normal frontend updates.
