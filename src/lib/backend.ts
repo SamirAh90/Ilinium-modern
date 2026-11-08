@@ -6,6 +6,22 @@ const authListeners = new Set<(event: string) => void>();
 
 async function request<T>(path: string, init?: RequestInit): Promise<Result<T>> {
   try {
+    if (import.meta.env.DEV && (!init?.method || init.method === "GET")) {
+      const query = new URLSearchParams(path.startsWith("?") ? path.slice(1) : path);
+      const resource = query.get("resource");
+      const publicTables = new Set(["site_settings", "treatment_categories", "treatments", "staff", "gallery_images", "opening_hours", "special_opening_hours"]);
+      if (resource && publicTables.has(resource)) {
+        const seedResponse = await fetch("/api/seed.json", { cache: "no-store" });
+        const seed = await seedResponse.json() as Record<string, Record<string, unknown>[]>;
+        let rows = [...(seed[resource] ?? [])];
+        const filters = JSON.parse(query.get("filters") || "[]") as Filter[];
+        rows = rows.filter((row) => filters.every((filter) => row[filter.column] === filter.value));
+        const ordering = JSON.parse(query.get("order") || "null") as { column: string; ascending: boolean } | null;
+        if (ordering) rows.sort((a, b) => String(a[ordering.column] ?? "").localeCompare(String(b[ordering.column] ?? "")) * (ordering.ascending ? 1 : -1));
+        const limit = Number(query.get("limit") || rows.length);
+        return { data: rows.slice(0, limit) as T, error: null };
+      }
+    }
     const response = await fetch(`${API}${path}`, {
       credentials: "same-origin", ...init,
       headers: init?.body instanceof FormData ? init.headers : { "Content-Type": "application/json", ...init?.headers },
