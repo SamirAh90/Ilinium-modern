@@ -1,16 +1,11 @@
-import { access, copyFile, mkdir, readFile } from "node:fs/promises";
+import { access, mkdir, readFile, rm } from "node:fs/promises";
 import { constants } from "node:fs";
 
 const required = ["dist/index.html", "dist/.htaccess", "dist/api/index.php", "dist/api/install.php", "dist/api/schema.sql", "dist/api/seed.json", "dist/api/config.example.php"];
 await Promise.all(required.map((file) => access(file, constants.R_OK)));
 
 await mkdir("dist/api", { recursive: true });
-try {
-  await access("public/api/config.php", constants.R_OK);
-  await copyFile("public/api/config.php", "dist/api/config.php");
-  console.log("Included the local server-only STRATO configuration in dist/api/config.php.");
-} catch {
-  const example = await readFile("dist/api/config.example.php", "utf8");
-  if (!example.includes("db_host")) throw new Error("Invalid STRATO configuration template.");
-  console.log("Build ready. Add dist/api/config.php from config.example.php before upload.");
-}
+await rm("dist/api/config.php", { force: true });
+const example = await readFile("dist/api/config.example.php", "utf8");
+if (!example.includes("db_host")) throw new Error("Invalid STRATO configuration template.");
+console.log("Production build ready without credentials. Add api/config.php securely on STRATO.");

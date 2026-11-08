@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Clock, ExternalLink, FileText, Home, Images, LayoutGrid, LogOut, Menu, Phone, Scissors, Search, Send, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BrandMark } from "@/components/site/BrandMark";
 import { backend } from "@/lib/backend";
 
 export const Route = createFileRoute("/_authenticated/admin")({
@@ -71,7 +72,7 @@ function AdminLayout() {
     <div className="min-h-screen bg-muted/40">
       <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-card px-4">
         <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Meny"><Menu /></Button>
-        <Link to="/admin" className="flex items-center gap-2"><Scissors className="size-4" /><span className="font-serif text-xl">Ilinium Admin</span></Link>
+        <Link to="/admin" className="flex items-center gap-2"><BrandMark className="size-6" /><span className="font-serif text-xl">Ilinium Admin</span></Link>
         <div className="ml-auto flex items-center gap-1">
           <Button variant="outline" size="sm" asChild><Link to="/"><Home /> Tillbaka till hemsidan</Link></Button>
           <Button variant="ghost" size="sm" asChild><a href="/" target="_blank" rel="noreferrer" aria-label="Öppna hemsidan i ny flik"><ExternalLink /></a></Button>

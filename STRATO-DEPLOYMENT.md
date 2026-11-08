@@ -28,7 +28,7 @@ npm test
 npm run build:strato
 ```
 
-The output is in `dist/`. If `public/api/config.php` exists, the build securely copies it to `dist/api/config.php`; it is never committed.
+The output is in `dist/`. Production builds deliberately exclude `api/config.php` so credentials can never enter an archive accidentally. Upload the build, then create `api/config.php` directly on STRATO from `config.example.php`.
 
 ## 4. Upload
 

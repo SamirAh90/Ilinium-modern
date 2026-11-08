@@ -1,10 +1,10 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Scissors } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { BrandMark } from "@/components/site/BrandMark";
 import { backend } from "@/lib/backend";
 
 export const Route = createFileRoute("/auth")({
@@ -49,7 +49,7 @@ function AuthPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted/60 px-4">
       <form onSubmit={submit} className="w-full max-w-sm rounded-2xl bg-card p-8 shadow-soft">
-        <div className="flex items-center gap-2"><Scissors className="size-5" /><span className="font-serif text-2xl">Ilinium Admin</span></div>
+        <div className="flex items-center gap-2"><BrandMark className="size-7" /><span className="font-serif text-2xl">Ilinium Admin</span></div>
         <p className="mt-1 text-sm text-muted-foreground">{mode === "login" ? "Logga in för att hantera hemsidan." : "Ange din e-post så skickar vi en återställningslänk."}</p>
         <div className="mt-6 space-y-4">
           <div><Label htmlFor="email">E-post</Label><Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="mt-1.5 h-11" /></div>
