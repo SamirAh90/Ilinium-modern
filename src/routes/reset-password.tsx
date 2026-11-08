@@ -39,9 +39,19 @@ function Reset() {
     <div className="flex min-h-screen items-center justify-center bg-muted/60 px-4">
       <form onSubmit={submit} className="w-full max-w-sm rounded-2xl bg-card p-8 shadow-soft">
         <h1 className="text-3xl">Välj nytt lösenord</h1>
-        <Label htmlFor="pw" className="mt-6 block">Nytt lösenord</Label>
-        <Input id="pw" type="password" value={pw} onChange={(e) => setPw(e.target.value)} className="mt-1.5 h-11" />
-        <Button type="submit" variant="salon" size="xl" className="mt-6 w-full" disabled={busy}>Spara lösenord</Button>
+        <Label htmlFor="pw" className="mt-6 block">
+          Nytt lösenord
+        </Label>
+        <Input
+          id="pw"
+          type="password"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+          className="mt-1.5 h-11"
+        />
+        <Button type="submit" variant="salon" size="xl" className="mt-6 w-full" disabled={busy}>
+          Spara lösenord
+        </Button>
       </form>
     </div>
   );

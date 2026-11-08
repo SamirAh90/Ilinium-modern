@@ -8,7 +8,9 @@ describe("Salong Ilinium SEO", () => {
     for (const path of PUBLIC_PATHS) {
       const head = seoHead(undefined, "Salong Ilinium", path);
       expect(head.links).toEqual([{ rel: "canonical", href: `${SITE_URL}${path}` }]);
-      expect(head.meta.find((m) => "property" in m && m.property === "og:url")?.content).toBe(`${SITE_URL}${path}`);
+      expect(head.meta.find((m) => "property" in m && m.property === "og:url")?.content).toBe(
+        `${SITE_URL}${path}`,
+      );
     }
   });
 
@@ -23,11 +25,28 @@ describe("Salong Ilinium SEO", () => {
   it("uses the supplied Google profile and all supplied official social links without invented hours", () => {
     const content = {
       settings: {
-        contact: { street: "Hantverkargatan 42", postal: "112 21 Stockholm", phone: "08-654 52 52", email: "ilinium@gmail.com", mapsUrl: "https://share.google/j5v37bTs5KNraVuFl" },
-        social: { facebook: "https://www.facebook.com/salongilinium/", facebookLinda: "https://www.facebook.com/iliniumlinda/", instagramJasmine: "https://www.instagram.com/ilinium_frisorjasmine/", instagramLinda: "https://www.instagram.com/ilinium_frisorlinda/", website: "https://www.ilinium.se/" },
+        contact: {
+          street: "Hantverkargatan 42",
+          postal: "112 21 Stockholm",
+          phone: "08-654 52 52",
+          email: "ilinium@gmail.com",
+          mapsUrl: "https://share.google/j5v37bTs5KNraVuFl",
+        },
+        social: {
+          facebook: "https://www.facebook.com/salongilinium/",
+          facebookLinda: "https://www.facebook.com/iliniumlinda/",
+          instagramJasmine: "https://www.instagram.com/ilinium_frisorjasmine/",
+          instagramLinda: "https://www.instagram.com/ilinium_frisorlinda/",
+          website: "https://www.ilinium.se/",
+        },
         seo: { home: { description: "Frisör på Kungsholmen." } },
       },
-      staff: [{ facebook_url: "https://www.facebook.com/", instagram_url: "https://www.instagram.com/ilinium_frisorlinda/" }],
+      staff: [
+        {
+          facebook_url: "https://www.facebook.com/",
+          instagram_url: "https://www.instagram.com/ilinium_frisorlinda/",
+        },
+      ],
     } as unknown as PublicContent;
     const schema = salonSchema(content);
     expect(schema.hasMap).toBe("https://share.google/j5v37bTs5KNraVuFl");

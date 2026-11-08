@@ -1,7 +1,15 @@
 import { access, mkdir, readFile, rm } from "node:fs/promises";
 import { constants } from "node:fs";
 
-const required = ["dist/index.html", "dist/.htaccess", "dist/api/index.php", "dist/api/install.php", "dist/api/schema.sql", "dist/api/seed.json", "dist/api/config.example.php"];
+const required = [
+  "dist/index.html",
+  "dist/.htaccess",
+  "dist/api/index.php",
+  "dist/api/install.php",
+  "dist/api/schema.sql",
+  "dist/api/seed.json",
+  "dist/api/config.example.php",
+];
 await Promise.all(required.map((file) => access(file, constants.R_OK)));
 
 await mkdir("dist/api", { recursive: true });

@@ -1,6 +1,6 @@
 # Complete STRATO deployment
 
-This version has no production dependency on Supabase or another application server. STRATO serves the frontend, PHP API, MySQL database, administrator login, and uploaded images.
+STRATO serves the complete system: frontend, PHP API, MySQL database, administrator login, and uploaded images.
 
 ## 1. Create the STRATO database
 
@@ -19,11 +19,10 @@ Copy `public/api/config.example.php` to `public/api/config.php` and enter the ST
 
 ## 3. Export and build
 
-While the old content source is still available, run:
+Run:
 
 ```sh
 npm install
-npm run export:content
 npm test
 npm run build:strato
 ```

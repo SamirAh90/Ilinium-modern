@@ -7,11 +7,10 @@ Self-hosted website and CMS for Salong Ilinium. The complete production system r
 ```sh
 npm install
 npm test
-npm run export:content
 npm run build:strato
 ```
 
-The exported public salon content is stored in `public/api/seed.json` and imported by the one-time installer. See `STRATO-DEPLOYMENT.md` for the complete setup.
+The current salon content is stored in `public/api/seed.json` and imported by the one-time installer. See `STRATO-DEPLOYMENT.md` for the complete setup.
 
 ## Security
 

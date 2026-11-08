@@ -7,7 +7,13 @@ import { publicContentQuery, seoHead, useContent } from "@/lib/use-content";
 
 export const Route = createFileRoute("/galleri")({
   loader: ({ context }) => context.queryClient.ensureQueryData(publicContentQuery),
-  head: ({ loaderData }) => seoHead(loaderData?.settings.seo.gallery, "Galleri – Salong Ilinium", "/galleri", loaderData?.settings.pages.galleryIntro),
+  head: ({ loaderData }) =>
+    seoHead(
+      loaderData?.settings.seo.gallery,
+      "Galleri – Salong Ilinium",
+      "/galleri",
+      loaderData?.settings.pages.galleryIntro,
+    ),
   component: Page,
 });
 
@@ -22,7 +28,9 @@ function Page() {
         {s.social.instagramJasmine && (
           <div className="mt-12 text-center">
             <Button asChild variant="salon-outline" size="xl">
-              <a href={s.social.instagramJasmine} target="_blank" rel="noreferrer"><Instagram /> Fler bilder på Instagram</a>
+              <a href={s.social.instagramJasmine} target="_blank" rel="noreferrer">
+                <Instagram /> Fler bilder på Instagram
+              </a>
             </Button>
           </div>
         )}

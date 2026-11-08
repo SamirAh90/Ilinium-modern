@@ -9,7 +9,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { draftQuery, publishDraft, saveDraft, uploadImage, useInvalidatePublic } from "@/lib/admin";
 import type { SiteContent } from "@/lib/content";
 
-export function AdminPage({ title, description, actions, children }: { title: string; description?: string; actions?: ReactNode; children: ReactNode }) {
+export function AdminPage({
+  title,
+  description,
+  actions,
+  children,
+}: {
+  title: string;
+  description?: string;
+  actions?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <div className="mx-auto max-w-4xl">
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -33,24 +43,63 @@ export function Card({ title, children }: { title?: string; children: ReactNode 
   );
 }
 
-export function Field({ label, value, onChange, multiline, type = "text", hint, maxLength }: {
-  label: string; value: string; onChange: (v: string) => void; multiline?: boolean; type?: string; hint?: string; maxLength?: number;
+export function Field({
+  label,
+  value,
+  onChange,
+  multiline,
+  type = "text",
+  hint,
+  maxLength,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  multiline?: boolean;
+  type?: string;
+  hint?: string;
+  maxLength?: number;
 }) {
   const id = label.replace(/\W+/g, "-").toLowerCase() + Math.random().toString(36).slice(2, 5);
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
       {multiline ? (
-        <Textarea id={id} value={value} maxLength={maxLength} onChange={(e) => onChange(e.target.value)} className="mt-1.5 min-h-28 text-base" />
+        <Textarea
+          id={id}
+          value={value}
+          maxLength={maxLength}
+          onChange={(e) => onChange(e.target.value)}
+          className="mt-1.5 min-h-28 text-base"
+        />
       ) : (
-        <Input id={id} type={type} value={value} maxLength={maxLength} onChange={(e) => onChange(e.target.value)} className="mt-1.5 h-11 text-base" />
+        <Input
+          id={id}
+          type={type}
+          value={value}
+          maxLength={maxLength}
+          onChange={(e) => onChange(e.target.value)}
+          className="mt-1.5 h-11 text-base"
+        />
       )}
       {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
     </div>
   );
 }
 
-export function ImageInput({ label, value, onChange, folder, fallback }: { label: string; value: string | null; onChange: (url: string) => void; folder: string; fallback?: string }) {
+export function ImageInput({
+  label,
+  value,
+  onChange,
+  folder,
+  fallback,
+}: {
+  label: string;
+  value: string | null;
+  onChange: (url: string) => void;
+  folder: string;
+  fallback?: string;
+}) {
   const ref = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
   async function pick(f?: File) {
@@ -74,28 +123,78 @@ export function ImageInput({ label, value, onChange, folder, fallback }: { label
           {src && <img src={src} alt="" className="h-full w-full object-cover" />}
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" onClick={() => ref.current?.click()} disabled={busy}>
-            {busy ? <Loader2 className="animate-spin" /> : <ImagePlus />} {value ? "Byt bild" : "Ladda upp bild"}
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => ref.current?.click()}
+            disabled={busy}
+          >
+            {busy ? <Loader2 className="animate-spin" /> : <ImagePlus />}{" "}
+            {value ? "Byt bild" : "Ladda upp bild"}
           </Button>
-          {value && <Button type="button" variant="ghost" onClick={() => onChange("")}>Ta bort</Button>}
+          {value && (
+            <Button type="button" variant="ghost" onClick={() => onChange("")}>
+              Ta bort
+            </Button>
+          )}
         </div>
-        <input ref={ref} type="file" accept="image/*" hidden onChange={(e) => pick(e.target.files?.[0])} />
+        <input
+          ref={ref}
+          type="file"
+          accept="image/*"
+          hidden
+          onChange={(e) => pick(e.target.files?.[0])}
+        />
       </div>
     </div>
   );
 }
 
-export function MoveButtons({ onUp, onDown, disableUp, disableDown }: { onUp: () => void; onDown: () => void; disableUp?: boolean; disableDown?: boolean }) {
+export function MoveButtons({
+  onUp,
+  onDown,
+  disableUp,
+  disableDown,
+}: {
+  onUp: () => void;
+  onDown: () => void;
+  disableUp?: boolean;
+  disableDown?: boolean;
+}) {
   return (
     <div className="flex flex-col">
-      <Button type="button" variant="ghost" size="icon" className="h-7" onClick={onUp} disabled={disableUp} aria-label="Flytta upp"><ArrowUp /></Button>
-      <Button type="button" variant="ghost" size="icon" className="h-7" onClick={onDown} disabled={disableDown} aria-label="Flytta ner"><ArrowDown /></Button>
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        className="h-7"
+        onClick={onUp}
+        disabled={disableUp}
+        aria-label="Flytta upp"
+      >
+        <ArrowUp />
+      </Button>
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        className="h-7"
+        onClick={onDown}
+        disabled={disableDown}
+        aria-label="Flytta ner"
+      >
+        <ArrowDown />
+      </Button>
     </div>
   );
 }
 
 export function Loading() {
-  return <div className="flex justify-center py-20"><Loader2 className="size-6 animate-spin text-muted-foreground" /></div>;
+  return (
+    <div className="flex justify-center py-20">
+      <Loader2 className="size-6 animate-spin text-muted-foreground" />
+    </div>
+  );
 }
 
 /** Edits the draft copy of site texts; publishing copies the draft to the live site. */
@@ -154,15 +253,29 @@ export function useDraftEditor() {
   return { content, update, save, publish, dirty, busy, loading: q.isLoading };
 }
 
-export function DraftBar({ editor, previewPath = "/" }: { editor: ReturnType<typeof useDraftEditor>; previewPath?: string }) {
+export function DraftBar({
+  editor,
+  previewPath = "/",
+}: {
+  editor: ReturnType<typeof useDraftEditor>;
+  previewPath?: string;
+}) {
   return (
     <div className="sticky bottom-0 z-10 -mx-4 mt-8 flex flex-wrap items-center gap-2 border-t border-border bg-background/95 px-4 py-3 backdrop-blur md:mx-0 md:rounded-2xl md:border">
-      <span className="mr-auto text-xs text-muted-foreground">{editor.dirty ? "Osparade ändringar" : "Allt sparat"}</span>
-      <Button variant="outline" onClick={editor.save} disabled={editor.busy}><Save /> Spara utkast</Button>
-      <Button variant="outline" asChild>
-        <a href={`${previewPath}?forhandsgranska=1`} target="_blank" rel="noreferrer"><Eye /> Förhandsgranska</a>
+      <span className="mr-auto text-xs text-muted-foreground">
+        {editor.dirty ? "Osparade ändringar" : "Allt sparat"}
+      </span>
+      <Button variant="outline" onClick={editor.save} disabled={editor.busy}>
+        <Save /> Spara utkast
       </Button>
-      <Button variant="salon" onClick={editor.publish} disabled={editor.busy}><Send /> Publicera</Button>
+      <Button variant="outline" asChild>
+        <a href={`${previewPath}?forhandsgranska=1`} target="_blank" rel="noreferrer">
+          <Eye /> Förhandsgranska
+        </a>
+      </Button>
+      <Button variant="salon" onClick={editor.publish} disabled={editor.busy}>
+        <Send /> Publicera
+      </Button>
     </div>
   );
 }

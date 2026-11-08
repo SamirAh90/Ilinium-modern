@@ -38,7 +38,9 @@ function AuthPage() {
       if (error) return toast.error("Fel e-post eller lösenord.");
       navigate({ to: "/admin" });
     } else {
-      const { error } = await backend.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
+      const { error } = await backend.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
       setBusy(false);
       if (error) return toast.error("Kunde inte skicka e-post. Försök igen.");
       toast.success("Om adressen finns har vi skickat en länk för att välja nytt lösenord.");
@@ -49,21 +51,54 @@ function AuthPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted/60 px-4">
       <form onSubmit={submit} className="w-full max-w-sm rounded-2xl bg-card p-8 shadow-soft">
-        <div className="flex items-center gap-2"><BrandMark className="size-7" /><span className="font-serif text-2xl">Ilinium Admin</span></div>
-        <p className="mt-1 text-sm text-muted-foreground">{mode === "login" ? "Logga in för att hantera hemsidan." : "Ange din e-post så skickar vi en återställningslänk."}</p>
+        <div className="flex items-center gap-2">
+          <BrandMark className="size-7" />
+          <span className="font-serif text-2xl">Ilinium Admin</span>
+        </div>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {mode === "login"
+            ? "Logga in för att hantera hemsidan."
+            : "Ange din e-post så skickar vi en återställningslänk."}
+        </p>
         <div className="mt-6 space-y-4">
-          <div><Label htmlFor="email">E-post</Label><Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="mt-1.5 h-11" /></div>
+          <div>
+            <Label htmlFor="email">E-post</Label>
+            <Input
+              id="email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1.5 h-11"
+            />
+          </div>
           {mode === "login" && (
-            <div><Label htmlFor="pw">Lösenord</Label><Input id="pw" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="mt-1.5 h-11" /></div>
+            <div>
+              <Label htmlFor="pw">Lösenord</Label>
+              <Input
+                id="pw"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="mt-1.5 h-11"
+              />
+            </div>
           )}
         </div>
         <Button type="submit" variant="salon" size="xl" className="mt-6 w-full" disabled={busy}>
           {busy ? "Vänta…" : mode === "login" ? "Logga in" : "Skicka länk"}
         </Button>
-        <button type="button" onClick={() => setMode(mode === "login" ? "forgot" : "login")} className="mt-4 w-full text-center text-sm text-muted-foreground underline-offset-4 hover:underline">
+        <button
+          type="button"
+          onClick={() => setMode(mode === "login" ? "forgot" : "login")}
+          className="mt-4 w-full text-center text-sm text-muted-foreground underline-offset-4 hover:underline"
+        >
           {mode === "login" ? "Glömt lösenordet?" : "Tillbaka till inloggning"}
         </button>
-        <Button variant="outline" size="sm" asChild className="mt-4 w-full"><a href="/">← Tillbaka till hemsidan</a></Button>
+        <Button variant="outline" size="sm" asChild className="mt-4 w-full">
+          <a href="/">← Tillbaka till hemsidan</a>
+        </Button>
       </form>
     </div>
   );

@@ -1,7 +1,22 @@
 import { createFileRoute, Link, Outlet, redirect, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { Clock, ExternalLink, FileText, Home, Images, LayoutGrid, LogOut, Menu, Phone, Scissors, Search, Send, ShieldCheck, Users } from "lucide-react";
+import {
+  Clock,
+  ExternalLink,
+  FileText,
+  Home,
+  Images,
+  LayoutGrid,
+  LogOut,
+  Menu,
+  Phone,
+  Scissors,
+  Search,
+  Send,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandMark } from "@/components/site/BrandMark";
 import { backend } from "@/lib/backend";
@@ -19,7 +34,12 @@ export const Route = createFileRoute("/_authenticated/admin")({
     ],
   }),
   beforeLoad: async ({ context }) => {
-    const { data } = await backend.from("user_roles").select("role").eq("user_id", context.user.id).eq("role", "admin").maybeSingle();
+    const { data } = await backend
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", context.user.id)
+      .eq("role", "admin")
+      .maybeSingle();
     if (!data) throw redirect({ to: "/ingen-behorighet" });
   },
   component: AdminLayout,
@@ -71,17 +91,44 @@ function AdminLayout() {
   return (
     <div className="min-h-screen bg-muted/40">
       <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border bg-card px-4">
-        <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Meny"><Menu /></Button>
-        <Link to="/admin" className="flex items-center gap-2"><BrandMark className="size-6" /><span className="font-serif text-xl">Ilinium Admin</span></Link>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="lg:hidden"
+          onClick={() => setOpen(!open)}
+          aria-label="Meny"
+        >
+          <Menu />
+        </Button>
+        <Link to="/admin" className="flex items-center gap-2">
+          <BrandMark className="size-6" />
+          <span className="font-serif text-xl">Ilinium Admin</span>
+        </Link>
         <div className="ml-auto flex items-center gap-1">
-          <Button variant="outline" size="sm" asChild><Link to="/"><Home /> Tillbaka till hemsidan</Link></Button>
-          <Button variant="ghost" size="sm" asChild><a href="/" target="_blank" rel="noreferrer" aria-label="Öppna hemsidan i ny flik"><ExternalLink /></a></Button>
-          <Button variant="ghost" size="sm" onClick={signOut}><LogOut /> <span className="hidden sm:inline">Logga ut</span></Button>
+          <Button variant="outline" size="sm" asChild>
+            <Link to="/">
+              <Home /> Tillbaka till hemsidan
+            </Link>
+          </Button>
+          <Button variant="ghost" size="sm" asChild>
+            <a href="/" target="_blank" rel="noreferrer" aria-label="Öppna hemsidan i ny flik">
+              <ExternalLink />
+            </a>
+          </Button>
+          <Button variant="ghost" size="sm" onClick={signOut}>
+            <LogOut /> <span className="hidden sm:inline">Logga ut</span>
+          </Button>
         </div>
       </header>
       <div className="flex">
-        <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 overflow-y-auto border-r border-border bg-card p-4 lg:block">{nav}</aside>
-        {open && <div className="fixed inset-x-0 top-14 z-20 border-b border-border bg-card p-4 shadow-soft lg:hidden">{nav}</div>}
+        <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 overflow-y-auto border-r border-border bg-card p-4 lg:block">
+          {nav}
+        </aside>
+        {open && (
+          <div className="fixed inset-x-0 top-14 z-20 border-b border-border bg-card p-4 shadow-soft lg:hidden">
+            {nav}
+          </div>
+        )}
         <main className="min-w-0 flex-1 px-4 py-8 md:px-8">
           <Outlet />
         </main>

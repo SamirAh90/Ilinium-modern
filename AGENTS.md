@@ -1,4 +1,5 @@
 ## Architecture rules
+
 - The production build is a static Vite/React application for Apache hosting on STRATO Basic; no Node.js runtime is required.
 - Public SEO uses the shared browser-safe SEO helper with leaf-only self-referencing URLs; the static sitemap lists only public content routes.
 - HairSalon structured data derives contact and profile links from published CMS content; omit unverified hours and ratings.

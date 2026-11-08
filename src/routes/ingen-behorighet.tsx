@@ -16,8 +16,12 @@ export const Route = createFileRoute("/ingen-behorighet")({
   component: () => (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4 text-center">
       <h1 className="text-4xl">Ingen behörighet</h1>
-      <p className="max-w-sm text-muted-foreground">Ditt konto har inte tillgång till adminportalen.</p>
-      <Button asChild variant="salon" size="xl"><Link to="/">Till hemsidan</Link></Button>
+      <p className="max-w-sm text-muted-foreground">
+        Ditt konto har inte tillgång till adminportalen.
+      </p>
+      <Button asChild variant="salon" size="xl">
+        <Link to="/">Till hemsidan</Link>
+      </Button>
     </div>
   ),
 });

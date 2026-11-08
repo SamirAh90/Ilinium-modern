@@ -30,4 +30,3 @@ export function useContent(): PublicContent & { preview: boolean } {
 
   return { ...data, settings: draft ?? data.settings, preview: !!draft };
 }
-

@@ -19,11 +19,35 @@ function Page() {
   const c = ed.content;
   if (!c) return <Loading />;
   return (
-    <AdminPage title="SEO-inställningar" description="Titel och beskrivning som visas i Google och när sidan delas.">
+    <AdminPage
+      title="SEO-inställningar"
+      description="Titel och beskrivning som visas i Google och när sidan delas."
+    >
       {PAGES.map(({ key, label }) => (
         <Card key={key} title={label}>
-          <Field label="Sidtitel" value={c.seo[key]?.title ?? ""} maxLength={70} hint={`${c.seo[key]?.title.length ?? 0}/60 tecken rekommenderas`} onChange={(v) => ed.update((d) => { d.seo[key] = { title: v, description: d.seo[key]?.description ?? "" }; })} />
-          <Field label="Beskrivning" multiline value={c.seo[key]?.description ?? ""} maxLength={200} hint={`${c.seo[key]?.description.length ?? 0}/160 tecken rekommenderas`} onChange={(v) => ed.update((d) => { d.seo[key] = { title: d.seo[key]?.title ?? "", description: v }; })} />
+          <Field
+            label="Sidtitel"
+            value={c.seo[key]?.title ?? ""}
+            maxLength={70}
+            hint={`${c.seo[key]?.title.length ?? 0}/60 tecken rekommenderas`}
+            onChange={(v) =>
+              ed.update((d) => {
+                d.seo[key] = { title: v, description: d.seo[key]?.description ?? "" };
+              })
+            }
+          />
+          <Field
+            label="Beskrivning"
+            multiline
+            value={c.seo[key]?.description ?? ""}
+            maxLength={200}
+            hint={`${c.seo[key]?.description.length ?? 0}/160 tecken rekommenderas`}
+            onChange={(v) =>
+              ed.update((d) => {
+                d.seo[key] = { title: d.seo[key]?.title ?? "", description: v };
+              })
+            }
+          />
         </Card>
       ))}
       <DraftBar editor={ed} />
