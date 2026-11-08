@@ -32,7 +32,6 @@ import { Route as AuthenticatedAdminPubliceraRouteImport } from './routes/_authe
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin/seo'
 import { Route as AuthenticatedAdminStartsidaRouteImport } from './routes/_authenticated/admin/startsida'
 import { Route as AuthenticatedAdminTexterRouteImport } from './routes/_authenticated/admin/texter'
-import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -157,11 +156,6 @@ const AuthenticatedAdminTexterRoute =
     path: '/texter',
     getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
-const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
-  id: '/api/public/media/$',
-  path: '/api/public/media/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -186,7 +180,6 @@ export interface FileRoutesByFullPath {
   '/admin/startsida': typeof AuthenticatedAdminStartsidaRoute
   '/admin/texter': typeof AuthenticatedAdminTexterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
-  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -210,7 +203,6 @@ export interface FileRoutesByTo {
   '/admin/startsida': typeof AuthenticatedAdminStartsidaRoute
   '/admin/texter': typeof AuthenticatedAdminTexterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
-  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -237,7 +229,6 @@ export interface FileRoutesById {
   '/_authenticated/admin/startsida': typeof AuthenticatedAdminStartsidaRoute
   '/_authenticated/admin/texter': typeof AuthenticatedAdminTexterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
-  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -264,7 +255,6 @@ export interface FileRouteTypes {
     | '/admin/startsida'
     | '/admin/texter'
     | '/admin/'
-    | '/api/public/media/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -288,7 +278,6 @@ export interface FileRouteTypes {
     | '/admin/startsida'
     | '/admin/texter'
     | '/admin'
-    | '/api/public/media/$'
   id:
     | '__root__'
     | '/'
@@ -314,7 +303,6 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/startsida'
     | '/_authenticated/admin/texter'
     | '/_authenticated/admin/'
-    | '/api/public/media/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -329,7 +317,6 @@ export interface RootRouteChildren {
   KontaktRoute: typeof KontaktRoute
   OmOssRoute: typeof OmOssRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
-  ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -495,13 +482,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminTexterRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
-    '/api/public/media/$': {
-      id: '/api/public/media/$'
-      path: '/api/public/media/$'
-      fullPath: '/api/public/media/$'
-      preLoaderRoute: typeof ApiPublicMediaSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -562,18 +542,7 @@ const rootRouteChildren: RootRouteChildren = {
   KontaktRoute: KontaktRoute,
   OmOssRoute: OmOssRoute,
   ResetPasswordRoute: ResetPasswordRoute,
-  ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

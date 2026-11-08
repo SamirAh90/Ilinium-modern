@@ -1,6 +1,6 @@
 import type { PublicContent, SeoEntry } from "./content";
 
-export const SITE_URL = "https://ilinium-kungsholmen-salon.lovable.app";
+export const SITE_URL = (import.meta.env["VITE_SITE_URL"] || "https://www.ilinium.se").replace(/\/$/, "");
 export const PUBLIC_PATHS = ["/", "/behandlingar", "/frisorer", "/galleri", "/om-oss", "/kontakt", "/integritet"] as const;
 export type PublicPath = (typeof PUBLIC_PATHS)[number];
 

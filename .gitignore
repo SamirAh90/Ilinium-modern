@@ -9,6 +9,8 @@ lerna-debug.log*
 
 node_modules
 dist
+strato-upload.zip
+public/api/config.php
 dist-ssr
 .output
 .vinxi

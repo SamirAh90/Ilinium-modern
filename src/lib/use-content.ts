@@ -1,6 +1,6 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { getPublicContent } from "./public-content.functions";
+import { getPublicContent } from "./public-content";
 import type { PublicContent, SiteContent } from "./content";
 import { supabase } from "@/integrations/supabase/client";
 export { seoHead } from "./seo";

@@ -1,29 +1,39 @@
-# Welcome to your Lovable project
+# Salong Ilinium
 
-This project was built with [Lovable](https://lovable.dev).
+Independent website and CMS for Salong Ilinium. The production frontend is a static React build for STRATO Basic web hosting; content, authentication, and the database remain in Supabase.
 
-## Build with Lovable
+## Local development
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requirements: Node.js 22 or newer and npm.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+cp .env.example .env
+npm install
 npm run dev
 ```
 
-## Built with
+The required browser-safe variables are documented in `.env.example`.
 
-- TanStack Start
-- TypeScript
-- React
+## Validation
+
+```sh
+npm test
+npm run build
+```
+
+## STRATO deployment
+
+See `STRATO-DEPLOYMENT.md`. Build the upload-ready folder with:
+
+```sh
+npm run build:strato
+```
+
+Upload the contents of `dist/` to the domain's document root. Do not upload the source repository or `.env`.
+
+## Technology
+
+- React, TypeScript, Vite, and TanStack Router
 - Tailwind CSS
+- Supabase database, authentication, and storage
+- A small PHP media proxy for the private Supabase storage bucket

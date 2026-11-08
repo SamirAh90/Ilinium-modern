@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://ilinium-kungsholmen-salon.lovable.app/sitemap.xml
+Sitemap: https://www.ilinium.se/sitemap.xml
